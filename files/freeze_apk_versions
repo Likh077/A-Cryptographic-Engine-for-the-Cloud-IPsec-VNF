@@ -1,0 +1,20 @@
+#!/bin/sh
+# outputs packet versions for use during container creation
+echo "updating repository metadata"
+apk update
+echo "copy /root/MANIFEST to your repository to use for later builds"
+
+apk info -v | awk '
+{
+    split($0, p, /-/)
+    l = length(p)
+    s=""; sep=""
+    for (i = 1; i <= l; i++ ) {
+        s = sprintf("%s%s%s", s, sep, p[i])
+        sep = "-"
+        if (i  == l-2) {
+            sep = "="
+        }
+    }
+    print s
+' | sort | tee /root/MANIFEST

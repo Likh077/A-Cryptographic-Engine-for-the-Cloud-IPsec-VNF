@@ -1,0 +1,20 @@
+[template]
+src = "ipsec.psk-template.conf.tmpl"
+prefix = "/ipsec"
+dest = "/etc/ipsec.config.d/ipsec.psk-template.conf"
+keys = [
+    "/localip",
+    "/localid",
+    "/remoteip",
+    "/remoteid",
+    "/localnet",
+    "/remotenet",
+    "/keyexchange",
+    "/espcipher",
+    "/ikecipher",
+    "/forceudp",
+    "/vti_key",
+    "/lifetime",
+    "/ikelifetime",
+    "/ikereauth"
+]
